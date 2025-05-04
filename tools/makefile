@@ -138,7 +138,7 @@ $(LST_FILE): $(ELF_FILE)
 $(BIN_FILE): $(ELF_FILE)
 	@echo 'Create Flash image (binary format)'
 	$(OBJCOPY) -v -O binary $(ELF_FILE)  $(BIN_FILE)
-	python $(TEL_PATH)/make/tl_firmware_tools.py add_crc $(BIN_FILE)
+	python $(TEL_PATH)/tools/tl_firmware_tools.py add_crc $(BIN_FILE)
 	@echo 'Finished building: $@'
 	@echo ' '
 
@@ -159,5 +159,12 @@ info:
 	@echo $(OBJS)
 
 all: $(ELF_FILE) $(LST_FILE) $(BIN_FILE) sizedummy
+
+b: bfr
+
+# build -> flash -> reset
+bfr: all
+	Cmd_download_tool 1 B85 wf 0 -i $(BIN_FILE)
+	Cmd_download_tool 1 B85 rst
 
 .PHONY: all clean info
