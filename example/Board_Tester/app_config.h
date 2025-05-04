@@ -141,7 +141,7 @@ extern "C" {
 #define GPIO_DEMO_SQUARE_WAVE	2	 //long presses SW2 to continuously trigger interrupts,IRQ_PIN connects to KEY3, toggle KEY3 to generate a square wave signal.
 #define GPIO_DEMO_MODE 			GPIO_DEMO_KEY
 
-
+#define BOARD_TEST 				1
 
 /* Define system clock */
 #define CLOCK_SYS_CLOCK_HZ  	24000000

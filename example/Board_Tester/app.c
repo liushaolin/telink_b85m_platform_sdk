@@ -112,7 +112,10 @@ void led_init(){
     const GPIO_PinTypeDef pins[] = {
         GPIO_PD0, GPIO_PD1, GPIO_PD6, GPIO_PD7,
         GPIO_PA2, GPIO_PA3, GPIO_PA4,
-        GPIO_PB0, GPIO_PB1, GPIO_PB2, GPIO_PB3, GPIO_PB4, GPIO_PB5,
+        GPIO_PB0, GPIO_PB1,
+#if BOARD_TEST
+		GPIO_PB2, GPIO_PB3, GPIO_PB5, GPIO_PB6,
+#endif
         GPIO_PC2, GPIO_PC3, GPIO_PC5, GPIO_PC6, GPIO_PC7,
 		LED1, LED2, LED3, LED4
     };
@@ -127,6 +130,7 @@ void led_init(){
         gpio_set_input_en(pin, 0);       // 禁用输入
         gpio_write(pin, 0);              // 初始输出低电平
     }
+	gpio_toggle(GPIO_PA5);
 }
 
 void led_toggle() {
@@ -134,7 +138,10 @@ void led_toggle() {
     const GPIO_PinTypeDef pins[] = {
         GPIO_PD0, GPIO_PD1, GPIO_PD6, GPIO_PD7,
         GPIO_PA2, GPIO_PA3, GPIO_PA4,
-        GPIO_PB0, GPIO_PB1, GPIO_PB2, GPIO_PB3, GPIO_PB4, GPIO_PB5,
+        GPIO_PB0, GPIO_PB1,
+#if BOARD_TEST
+		GPIO_PB2, GPIO_PB3, GPIO_PB5, GPIO_PB6,
+#endif
         GPIO_PC2, GPIO_PC3, GPIO_PC5, GPIO_PC6, GPIO_PC7,
 		LED1, LED2, LED3, LED4
     };
@@ -153,8 +160,13 @@ void led_toggle() {
 /////////////////////////////////////////////////////////////////////
 void main_loop (void)
 {
-   sleep_ms(2000);
-   led_toggle();
+   sleep_ms(50);
+
+#if BOARD_TEST
+	sleep_ms(1000);
+	led_toggle();
+#endif
+
 #if (GPIO_DEMO_MODE == GPIO_DEMO_SQUARE_WAVE)
    gpio_toggle(KEY3);
 #endif
