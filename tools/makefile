@@ -43,7 +43,7 @@ vendor_objs := $(patsubst $(vendor_dir)/%.c,$(OUT_PATH)/vendor/%.o,$(vendor_srcs
 SRCS += $(vendor_srcs)
 OBJS += $(vendor_objs)
 
-proj_srcs := $(wildcard $(PROJECT_PATH)/*.c)
+proj_srcs := $(shell find $(PROJECT_PATH) -name '*.c')
 proj_objs := $(patsubst $(PROJECT_PATH)/%.c,$(OUT_PATH)/project/%.o,$(proj_srcs))
 SRCS += $(proj_srcs)
 OBJS += $(proj_objs)
@@ -96,6 +96,8 @@ BIN_FILE := $(OUT_PATH)/$(PROJECT_NAME).bin
 
 # CREATE DIRS
 $(shell mkdir -p $(sort $(dir $(OBJS))))
+
+all: $(ELF_FILE) $(LST_FILE) $(BIN_FILE) sizedummy
 
 # RULES
 $(OUT_PATH)/boot/%.o: $(TEL_PATH)/chip/$(TEL_CHIP)/boot/%.S
@@ -158,7 +160,7 @@ info:
 	@echo "Object files:"
 	@echo $(OBJS)
 
-all: $(ELF_FILE) $(LST_FILE) $(BIN_FILE) sizedummy
+
 
 b: bfr
 

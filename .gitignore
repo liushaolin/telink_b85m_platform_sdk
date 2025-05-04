@@ -1,5 +1,4 @@
 demo/vendor/**/Makefile
 tc32/*
 build/*
-demo/vendor/**/*.bin
-demo/vendor/**/*.lst
+example/**/Makefile
