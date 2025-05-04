@@ -83,7 +83,7 @@ else
 	LS_FLAGS := $(TEL_PATH)/project/tlsr_tc32/$(TEL_CHIP)/link/boot_normal.link
 endif
 
-GCC_FLAGS += -DMCU_CORE_B85
+GCC_FLAGS += -DMCU_CORE_$(TEL_CHIP)
 
 INCLUDE_PATHS := -I$(PROJECT_PATH) -I$(TEL_PATH)/common -I$(TEL_PATH)/chip/$(TEL_CHIP)/drivers \
 				-I$(TEL_PATH)/demo/vendor/common/$(TEL_CHIP)/calibration \
