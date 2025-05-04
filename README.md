@@ -8,9 +8,12 @@ This project forked from [telink-semi/telink_b85m_platform_sdk](https://github.c
 需要安装python, git完本项目之后，在上级目录执行`tools\init.bat`，会自动解压TC32、生成所有工程的Makefile。
 
 运行当前目录的`setup_tlsr.bat`，会生成对应的path环境变量，每次首次进入时均需调用。
-之后执行如下命令进行验证：`cd demo\vendor\AUDIO_Demo && make all` 即可。
 
-烧录重启硬件：`make bfr` or `make b`.
+执行如下命令进行验证：`cd demo\vendor\AUDIO_Demo && make` 即可。
+
+烧录重启硬件：`make bfr` or `make b`， `bfr` 意思是 build、flash、reset.
+
+修改硬件平台，直接修改 `tools\Makefile` 中的 `TEL_CHIP := B87`,再次顶层目录执行 `python tools\make.py` 即可.
 
 参考如下页面：
 - [windows平台开发环境搭建](https://github.com/Ai-Thinker-Open/Telink_825X_SDK/blob/master/start_windows.md)
@@ -27,3 +30,8 @@ This project forked from [telink-semi/telink_b85m_platform_sdk](https://github.c
 
 - wget: [wget-for-windows](https://github.com/lifenjoiner/wget-for-windows)
 - unrar: [UnRAR for Windows](https://www.rarlab.com/rar_add.htm)
+
+## 页面地址
+
+- [GITHUB](https://github.com/liushaolin/telink_b85m_platform_sdk)
+- [GITEE](https://gitee.com/ev3/telink_b85m_platform_sdk)
