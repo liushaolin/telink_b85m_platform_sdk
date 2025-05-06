@@ -14,8 +14,8 @@ TOOL_URLS = {
 }
 
 TOOLS = {
-    "unrar": Path(__file__).parent / "unrar.exe",
-    "wget": Path(__file__).parent / "wget.exe"
+    "unrar": Path(__file__).parent / "windows/unrar.exe",
+    "wget": Path(__file__).parent / "windows/wget.exe"
 }
 
 TOOLS_PATH = {

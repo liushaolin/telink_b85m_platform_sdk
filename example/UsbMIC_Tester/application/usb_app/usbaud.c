@@ -24,7 +24,7 @@
 #if (!MCU_CORE_B80 && !MCU_CORE_B80B)
 #include "usbaud.h"
 #include "../usbstd/usb.h"
-#include "../usbstd/audioClassCommon.h"
+#include "../usbstd/AudioClassCommon.h"
 
 /*************************************************
  * g_audio_hid_chg:
